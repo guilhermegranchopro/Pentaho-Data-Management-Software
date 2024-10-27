@@ -1,2 +1,4 @@
 # Pentaho-Data-Management-Software
-Data Analysis and Integration Project using Pentaho Data Management Software.
+This project, developed for the Data Analysis and Integration course, focuses on building a data warehouse to analyze energy consumption and the adoption of smart meters across various regions in Portugal. Using two datasets—active energy contracts by meter type and monthly consumption by municipality—the project enables dynamic analysis of energy usage patterns and the distribution of smart meters.
+
+The data warehouse is structured with Time and Location dimensions, allowing users to explore metrics such as energy consumption (kWh) and percentage of smart meters by region and over time. Key insights include the seasonal impact on consumption, regional adoption of smart meters, and a correlation analysis between smart meter usage and average energy consumption per contract.
