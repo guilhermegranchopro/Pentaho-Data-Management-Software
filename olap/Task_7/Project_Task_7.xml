@@ -1,0 +1,38 @@
+<Schema name="Project_Task_7">
+  <Cube name="Project_Task_7" visible="true" cache="true" enabled="true">
+    <Table name="Fato_Consumo_Energia">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_tempo" highCardinality="false" name="Tempo">
+      <Hierarchy name="Hierarchy_Tempo" visible="true" hasAll="true" primaryKey="id_tempo">
+        <Table name="Dim_Tempo">
+        </Table>
+        <Level name="ano" visible="true" column="ano" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="estacao" visible="true" column="estacao" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="mes" visible="true" column="mes" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_localizacao" highCardinality="false" name="Localizacao">
+      <Hierarchy name="Hierarchy_Localizacao" visible="true" hasAll="true" primaryKey="id_localizacao">
+        <Table name="Dim_Localizacao">
+        </Table>
+        <Level name="regiao" visible="true" column="regiao" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="municipio" visible="true" column="municipio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="freguesia" visible="true" column="freguesia" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Energy Consumption (kWh)" column="consumo_energia_kwh" datatype="Numeric" formatString="#,##0.000" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="num_contratos_smart" column="num_contratos_smart" datatype="Integer" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="num_contratos_nao_smart" column="num_contratos_nao_smart" datatype="Integer" aggregator="sum" visible="true">
+    </Measure>
+    <CalculatedMember name="perc_medidores_inteligentes" formatString="0.000%" formula="([Measures].[num_contratos_smart] /  ([Measures].[num_contratos_smart] + [Measures].[num_contratos_nao_smart])) * 100 " dimension="Measures" visible="true">
+    </CalculatedMember>
+  </Cube>
+</Schema>
